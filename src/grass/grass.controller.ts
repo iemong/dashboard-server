@@ -7,6 +7,6 @@ export class GrassController {
 
   @Get()
   getGrass() {
-    this.grassService.getGrass();
+    return this.grassService.getGrass();
   }
 }
