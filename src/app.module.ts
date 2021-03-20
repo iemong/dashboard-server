@@ -3,6 +3,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmConfigService } from './config/typeorm-config.service';
+import { GrassModule } from './grass/grass.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TypeOrmConfigService } from './config/typeorm-config.service';
       useClass: TypeOrmConfigService,
     }),
     TasksModule,
+    GrassModule,
   ],
 })
 export class AppModule {}
