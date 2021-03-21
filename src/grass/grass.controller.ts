@@ -7,8 +7,7 @@ export class GrassController {
   constructor(private grassService: GrassService) {}
 
   @Get('/:id')
-  @Header('Content-Type', 'image/jpeg')
-  getGrass(@Param('id', GrassIdPipe) id: string) {
+  async getGrass(@Param('id', GrassIdPipe) id: string) {
     return this.grassService.getGrass(id);
   }
 }

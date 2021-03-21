@@ -9,9 +9,13 @@ export class GrassService {
         headers: {
           'Content-Type': 'image/jpeg',
         },
+        responseType: 'arraybuffer',
       })
       .toPromise();
-    console.log(res);
-    return res.data;
+    return 'data:image/jpeg;base64,' + base64Encode(res.data);
   }
+}
+
+function base64Encode(imgData) {
+  return imgData.toString('base64');
 }
