@@ -6,9 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = new ConfigService();
 
-  const sync = configService.get('DB_SYNC');
-  console.log(`TypeORM synchronize is [ ${sync} ]`);
-
   const port = configService.get<number>('API_PORT');
   await app.listen(port);
 }
