@@ -3,6 +3,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import { GrassModule } from './grass/grass.module';
 import { join } from 'path';
+import { MeterModule } from './meter/meter.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { join } from 'path';
       rootPath: join(__dirname, '..'),
     }),
     GrassModule,
+    MeterModule,
   ],
 })
 export class AppModule {}
