@@ -6,8 +6,8 @@
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
     <a
-        href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-        target="_blank"
+      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
+      target="_blank"
     >
       Vetur
     </a>
@@ -32,14 +32,14 @@
 </template>
 
 <script lang="ts" setup>
-import {ref, computed, defineProps} from 'vue'
+import { ref, computed, defineProps } from 'vue';
 
 const props = defineProps({
   msg: String,
-})
+});
 
-const count = ref(0)
-const double = computed(() => count.value * 2)
+const count = ref(0);
+const double = computed(() => count.value * 2);
 </script>
 
 <style scoped>
