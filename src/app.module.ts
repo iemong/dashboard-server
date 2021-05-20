@@ -3,14 +3,15 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import { GrassModule } from './grass/grass.module';
 import { join } from 'path';
-import { MeterModule } from './meter/meter.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TasksModule } from './tasks/tasks.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env/default.env'],
+      envFilePath: ['.env'],
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
@@ -18,8 +19,9 @@ import { TasksModule } from './tasks/tasks.module';
     }),
     ScheduleModule.forRoot(),
     GrassModule,
-    MeterModule,
     TasksModule,
+    PrismaModule,
+    ApiModule,
   ],
 })
 export class AppModule {}

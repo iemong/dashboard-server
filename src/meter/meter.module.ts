@@ -1,10 +1,10 @@
 import { HttpModule, Module } from '@nestjs/common';
-import { MeterController } from './meter.controller';
 import { MeterService } from './meter.service';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [HttpModule],
-  controllers: [MeterController],
+  imports: [HttpModule, PrismaModule],
   providers: [MeterService],
+  exports: [MeterService],
 })
 export class MeterModule {}
