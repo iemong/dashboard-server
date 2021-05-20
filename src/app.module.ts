@@ -5,6 +5,7 @@ import { GrassModule } from './grass/grass.module';
 import { join } from 'path';
 import { MeterModule } from './meter/meter.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
     GrassModule,
     MeterModule,
+    TasksModule,
   ],
 })
 export class AppModule {}
