@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      '/meter': {
-        target: 'http://localhost:3000/meter',
+      '/api': {
+        target: 'http://localhost:3000/api',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/meter/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },

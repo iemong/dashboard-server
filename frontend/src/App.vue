@@ -15,7 +15,7 @@ const handleFetch = async () => {
   if (isFetching.value) return;
   try {
     const json = await ky
-      .get('/meter', {
+      .get('/api/meter/all', {
         hooks: {
           beforeRequest: [
             () => {
