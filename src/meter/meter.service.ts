@@ -16,8 +16,10 @@ type Response = {
 export class MeterService {
   private readonly token: string;
   private readonly deviceId: string;
-  constructor(private httpService: HttpService) {
-    const configService = new ConfigService();
+  constructor(
+    private httpService: HttpService,
+    private configService: ConfigService,
+  ) {
     this.token = configService.get<string>('SWITCH_BOT_TOKEN');
     this.deviceId = configService.get<string>('SWITCH_BOT_DEVICE_ID');
   }
