@@ -15,7 +15,7 @@ import { ApiModule } from './api/api.module';
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..'),
+      rootPath: join(__dirname, '..', 'frontend'),
     }),
     ScheduleModule.forRoot(),
     GrassModule,
