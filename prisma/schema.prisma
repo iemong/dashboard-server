@@ -17,4 +17,5 @@ model Meter {
     hubDeviceId String
     humidity    Float
     temperature Float
+    createdAt DateTime @default(now())
 }
