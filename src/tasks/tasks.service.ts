@@ -7,7 +7,7 @@ export class TasksService {
   private readonly logger = new Logger(TasksService.name);
   constructor(private meterService: MeterService) {}
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
     await this.meterService.registerMeter();
     this.logger.debug('registered current meter');
