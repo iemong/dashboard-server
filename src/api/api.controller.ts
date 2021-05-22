@@ -10,6 +10,11 @@ export class ApiController {
     return this.apiService.getMeters();
   }
 
+  @Get('/meter/today')
+  async getMetersPerToday() {
+    return this.apiService.getMetersPerToday();
+  }
+
   @Post('/meter/add')
   async registerMeter() {
     return this.apiService.registerMeter();

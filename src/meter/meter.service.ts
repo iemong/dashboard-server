@@ -1,4 +1,4 @@
-import { HttpService, Injectable, Logger } from '@nestjs/common';
+import { HttpService, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
 import { Meter, Prisma } from '@prisma/client';
@@ -13,6 +13,14 @@ type Response = {
     temperature: number;
   };
 };
+
+export type MeterParams = Partial<{
+  skip: number;
+  take: number;
+  cursor: Prisma.MeterWhereUniqueInput;
+  where: Prisma.MeterWhereInput;
+  orderBy: Prisma.MeterOrderByInput;
+}>;
 
 @Injectable()
 export class MeterService {
@@ -59,13 +67,7 @@ export class MeterService {
     });
   }
 
-  async meters(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.MeterWhereUniqueInput;
-    where?: Prisma.MeterWhereInput;
-    orderBy?: Prisma.MeterOrderByInput;
-  }): Promise<Meter[]> {
+  async meters(params: MeterParams): Promise<Meter[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prismaService.meter.findMany({
       skip,
