@@ -28,8 +28,8 @@ const isFetching = ref(false);
 
 const timeLength = ref(0);
 
-const temperatureRange = [25, 30];
-const humidityRange = [60, 80];
+const temperatureRange: [number, number] = [25, 30];
+const humidityRange: [number, number] = [60, 80];
 
 const isInRange = (range: [number, number]) => (value: number) =>
   range[0] < value && value <= range[1];
