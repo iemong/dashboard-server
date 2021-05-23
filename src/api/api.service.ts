@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MeterParams, MeterService } from '../meter/meter.service';
+import { MeterService } from '../meter/meter.service';
 
 @Injectable()
 export class ApiService {
