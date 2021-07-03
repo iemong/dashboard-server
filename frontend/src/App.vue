@@ -1,6 +1,6 @@
 <template>
-  <h1>過去24時間でダニが湧きそうな時間</h1>
-  <p>{{ timeLength }} 時間</p>
+  <h1>直近24時間でダニが増えている確率</h1>
+  <p>{{ percentage }}</p>
   <Button
     label="switchbot"
     @click="handleFetch"
@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import Button from 'primevue/button';
 import ky from 'ky';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 type Meter = {
   id: number;
@@ -27,6 +27,7 @@ type Meter = {
 const isFetching = ref(false);
 
 const timeLength = ref(0);
+const wholeTimeLength = ref(0);
 
 const temperatureRange: [number, number] = [25, 30];
 const humidityRange: [number, number] = [60, 80];
@@ -51,6 +52,7 @@ const handleFetch = async () => {
         },
       })
       .json<Meter[]>();
+    wholeTimeLength.value = meterList.length
     timeLength.value = meterList.reduce((acc, cur) => {
       if (
         isInTemperatureRange(cur.temperature) &&
@@ -68,6 +70,11 @@ const handleFetch = async () => {
 };
 
 handleFetch();
+
+const percentage = computed(() => {
+  const result =  timeLength.value / wholeTimeLength.value
+  return isNaN(result) ? '計測できません' : `${result}%`
+})
 
 const timerId = ref<number | null>(null);
 onMounted(() => {
@@ -101,7 +108,7 @@ body {
 
 h1 {
   color: #eee;
-  font-size: 64px;
+  font-size: 48px;
   text-align: left;
 }
 
