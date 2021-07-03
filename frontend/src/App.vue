@@ -73,7 +73,7 @@ handleFetch();
 
 const percentage = computed(() => {
   const result =  timeLength.value / wholeTimeLength.value
-  return isNaN(result) ? '計測できません' : `${result}%`
+  return isNaN(result) ? '計測できません' : `${Math.round(result)}%`
 })
 
 const timerId = ref<number | null>(null);
